@@ -21,7 +21,7 @@ public class Teste {
         //ORDEM ORDENADA
         //para cada arvore
         
-        for(n = 1; n <= 9; n++)
+        for(n = 1; n <= 10; n++)
         {
             arvoreOrdenada = new ArvoreSBB();
             
@@ -47,7 +47,7 @@ public class Teste {
         
         //ORDEM ALEATÓRIA
         //para cada arvore
-        for(n = 1; n <= 9; n++)
+        for(n = 1; n <= 10; n++)
         {
             arvoreAleatoria = new ArvoreSBB();
             
