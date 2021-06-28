@@ -33,7 +33,8 @@ public class Teste {
                     break;
             default:System.out.println("Ordem não identificada");
                     System.exit(1);
-        }         
+        }   
+        //  item que será pesquisado e nunca será encontrado
             Item itemSearch = new Item(200000);
             
             //inserindo elementos em cada arvore
