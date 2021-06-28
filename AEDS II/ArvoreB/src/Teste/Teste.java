@@ -14,7 +14,7 @@ public class Teste {
 
     public static void main(String[] args) {
         
-        int contadorDeComparacoes, elemento, n;
+        int contadorDeComparacoes,paginasVisitadas, elemento, n;
         long tempoInicial, tempoFinal, tempoGasto;
         
         ArvoreB arvoreB = null;
@@ -52,8 +52,8 @@ public class Teste {
             //pesquisar por um elemento não existente em cada árvore
             for(n = 1; n <= 10; n++)
             {
-                
                 // Arvore SBB
+                
                 tempoInicial = System.nanoTime();
                 //contadorDeComparacoes = arvoreSBB.pesquisa(itemSearch);
                 arvoreSBB.pesquisa(itemSearch);
@@ -68,13 +68,13 @@ public class Teste {
                 tempoInicial = System.nanoTime();
                 //contadorDeComparacoes = arvoreB.pesquisa(itemSearch);
                 arvoreB.pesquisa(itemSearch);
-                contadorDeComparacoes = arvoreB.getContadorDeComparacoes();
+                paginasVisitadas = arvoreB.getPaginasVisitadas();
                 tempoFinal = System.nanoTime();
                 tempoGasto = (tempoFinal-tempoInicial);
                 //Dados obtidos
-                //System.out.println("Arvore B: "+n+" Ordem: "+ordem+" Tempo Gasto para fazer a procura: "+tempoGasto+"(nano segundos)"+" Numero de Comparacoes: "+contadorDeComparacoes);
+                //System.out.println("Arvore B: "+n+" Ordem: "+ordem+" Tempo Gasto para fazer a procura: "+tempoGasto+"(nano segundos)"+" Paginas visitadas: "+paginasVisitadas);
                 String nameFile = "ordemOrdenadaArvoreB - Ordem "+ordem;
-                arvoreSBB.gravaDados(n, contadorDeComparacoes, tempoGasto,nameFile);
+                arvoreSBB.gravaDados(n, paginasVisitadas, tempoGasto,nameFile);
             }
            
         }

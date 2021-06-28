@@ -22,30 +22,35 @@ public class ArvoreB {
     }
     private Pagina raiz;
     private int m,mm;
-    private int ContadorDeComparacoes;
+    private int paginasVisitadas;
 
     public ArvoreB(int m) {
         this.raiz = null;
         this.m = m;
         this.mm = 2*m;
-        this.ContadorDeComparacoes = 0;
+        this.paginasVisitadas = 0;
     }
    
    // pesquisando um elemento
    private Item pesquisa(Item reg, Pagina ap){
-       this.ContadorDeComparacoes++;
        if(ap == null)
            return null; // Registro não encontrado
        else{
            int i = 0;
            while((i< ap.n-1) && (reg.compara(ap.r[i]) > 0))
                i++;
-           if(reg.compara(ap.r[i]) == 0)
+           if(reg.compara(ap.r[i]) == 0){
+               this.paginasVisitadas++;
                return ap.r[i];
-           else if(reg.compara(ap.r[i]) < 0)
+           }
+           else if(reg.compara(ap.r[i]) < 0){
+               this.paginasVisitadas++;
                return pesquisa(reg, ap.p[i]);
-           else
+           }
+           else{
+               this.paginasVisitadas++;
                return pesquisa(reg, ap.p[i+1]);
+           }
        }
    }
    
@@ -133,13 +138,13 @@ public class ArvoreB {
            this.raiz = apRetorno;
    }
    
-   public void gravaDados(int n, int contadorDeComparacoes, long tempoGasto, String nomeArquivo)
+   public void gravaDados(int n, int paginasVisitadas, long tempoGasto, String nomeArquivo)
    {
-       String string = "Arvore: "+n+" Tempo Gasto para fazer a procura: "+tempoGasto+"(nano segundos)"+" Numero de Comparacoes: "+contadorDeComparacoes+"\n";
+       String string = "Arvore: "+n+" Tempo Gasto para fazer a procura: "+tempoGasto+"(nano segundos)"+" Paginas visitadas: "+paginasVisitadas+"\n";
        CreateTextFile.escrever(string, nomeArquivo);
    }
 
-    public int getContadorDeComparacoes() {
-        return ContadorDeComparacoes;
+    public int getPaginasVisitadas() {
+        return paginasVisitadas;
     }
 }
