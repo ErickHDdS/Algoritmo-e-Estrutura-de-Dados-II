@@ -14,7 +14,7 @@ public class Teste {
 
     public static void main(String[] args) {
         
-        int contadorDeComparacoes,paginasVisitadas, elemento, n;
+        int contadorDeComparacoes, elemento, n;
         long tempoInicial, tempoFinal, tempoGasto;
         
         ArvoreB arvoreB = null;
@@ -25,11 +25,11 @@ public class Teste {
         int ordem = scan.nextInt();
         
         switch(ordem){
-            case 2: arvoreB = new ArvoreB(2);
+            case 2: 
                     break;
-            case 4: arvoreB = new ArvoreB(4);
+            case 4: 
                     break;
-            case 6: arvoreB = new ArvoreB(6);
+            case 6:
                     break;
             default:System.out.println("Ordem não identificada");
                     System.exit(1);
@@ -40,6 +40,7 @@ public class Teste {
             //inserindo elementos em cada arvore
             for(n = 1; n <= 10; n++)
             {
+                arvoreB = new ArvoreB(ordem);
                 //insere os elementos ordenadamente
                 for(elemento = 1; elemento <= n*10000; elemento++)
                 {
@@ -47,11 +48,8 @@ public class Teste {
                     arvoreSBB.insere(itemElemento);
                     arvoreB.insere(itemElemento);
                 }           
-            }
-            
-            //pesquisar por um elemento não existente em cada árvore
-            for(n = 1; n <= 10; n++)
-            {
+
+                //pesquisar por um elemento não existente em cada árvore
                 // Arvore SBB
                 
                 tempoInicial = System.nanoTime();
@@ -68,13 +66,14 @@ public class Teste {
                 tempoInicial = System.nanoTime();
                 //contadorDeComparacoes = arvoreB.pesquisa(itemSearch);
                 arvoreB.pesquisa(itemSearch);
-                paginasVisitadas = arvoreB.getPaginasVisitadas();
+                contadorDeComparacoes = arvoreB.getComparacoesRealizadas();
                 tempoFinal = System.nanoTime();
                 tempoGasto = (tempoFinal-tempoInicial);
                 //Dados obtidos
                 //System.out.println("Arvore B: "+n+" Ordem: "+ordem+" Tempo Gasto para fazer a procura: "+tempoGasto+"(nano segundos)"+" Paginas visitadas: "+paginasVisitadas);
                 String nameFile = "ordemOrdenadaArvoreB - Ordem "+ordem;
-                arvoreSBB.gravaDados(n, paginasVisitadas, tempoGasto,nameFile);
+                arvoreSBB.gravaDados(n, contadorDeComparacoes, tempoGasto,nameFile);
+                arvoreB.setComparacoesRealizadas(0);
             }
            
         }

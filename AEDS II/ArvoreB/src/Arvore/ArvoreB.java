@@ -22,13 +22,15 @@ public class ArvoreB {
     }
     private Pagina raiz;
     private int m,mm;
-    private int paginasVisitadas;
+    private int comparacoesRealizadas;
+    private int marina;
 
     public ArvoreB(int m) {
         this.raiz = null;
         this.m = m;
         this.mm = 2*m;
-        this.paginasVisitadas = 0;
+        this.comparacoesRealizadas = 0;
+
     }
    
    // pesquisando um elemento
@@ -39,16 +41,14 @@ public class ArvoreB {
            int i = 0;
            while((i< ap.n-1) && (reg.compara(ap.r[i]) > 0))
                i++;
+           this.comparacoesRealizadas++;
            if(reg.compara(ap.r[i]) == 0){
-               this.paginasVisitadas++;
                return ap.r[i];
            }
            else if(reg.compara(ap.r[i]) < 0){
-               this.paginasVisitadas++;
                return pesquisa(reg, ap.p[i]);
            }
            else{
-               this.paginasVisitadas++;
                return pesquisa(reg, ap.p[i+1]);
            }
        }
@@ -57,6 +57,7 @@ public class ArvoreB {
     public Item pesquisa(Item reg)
     {
         return this.pesquisa(reg, this.raiz);
+        
     }
    
    private Pagina insere(Item reg, Pagina ap, Item[] regRetorno, boolean[] cresceu){
@@ -140,11 +141,16 @@ public class ArvoreB {
    
    public void gravaDados(int n, int paginasVisitadas, long tempoGasto, String nomeArquivo)
    {
-       String string = "Arvore: "+n+" Tempo Gasto para fazer a procura: "+tempoGasto+"(nano segundos)"+" Paginas visitadas: "+paginasVisitadas+"\n";
+       String string = "Arvore: "+n+" Tempo Gasto para fazer a procura: "+tempoGasto+"(nano segundos)"+" Numero de Comparacoes: "+paginasVisitadas+"\n";
        CreateTextFile.escrever(string, nomeArquivo);
    }
 
-    public int getPaginasVisitadas() {
-        return paginasVisitadas;
+    public int getComparacoesRealizadas() {
+        return comparacoesRealizadas;
     }
+
+    public void setComparacoesRealizadas(int comparacoesRealizadas) {
+        this.comparacoesRealizadas = comparacoesRealizadas;
+    }
+    
 }
