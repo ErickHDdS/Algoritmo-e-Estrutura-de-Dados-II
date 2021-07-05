@@ -23,7 +23,6 @@ import Item.Item;
 //        public  void constroi ();
 //        public  Item max ();
         
-        
         public Item max() {
             return this.v[1];
         }
@@ -68,5 +67,4 @@ import Item.Item;
         public void setComparacoes(int comparacoes) {
             this.comparacoes = comparacoes;
         }
-       
-    }
+}

@@ -11,9 +11,7 @@ public class Teste {
         int contadorDeComparacoes, elementoCrescente, elementoDecrescente, elementoAleatorio, n, posicao;
         String nameFile;
         Random gerador = new Random();
-        
-            //item que será pesquisado e nunca será encontrado
-            
+                   
             //n variando de 10.000 até 100.000, com intervalo de 10.000;
             for (n = 1; n <= 10; n++) 
             {
@@ -54,36 +52,5 @@ public class Teste {
                contadorDeComparacoes = heapAleatorio.getComparacoes();
                heapAleatorio.gravaDados(n, contadorDeComparacoes,nameFile);
             }
-            
-            
-            /*
-            //pesquisar por um elemento não existente em cada árvore
-            for(n = 1; n <= 10; n++)
-            {
-                // Arvore SBB
-                
-                tempoInicial = System.nanoTime();
-                //contadorDeComparacoes = arvoreSBB.pesquisa(itemSearch);
-                arvoreSBB.pesquisa(itemSearch);
-                contadorDeComparacoes = arvoreSBB.getContadorDeComparacoes();
-                tempoFinal = System.nanoTime();
-                tempoGasto = (tempoFinal-tempoInicial);
-                //Dados obtidos
-                //System.out.println("Arvore SBB: "+n+" Tempo Gasto para fazer a procura: "+tempoGasto+"(nano segundos)"+" Numero de Comparacoes: "+contadorDeComparacoes);
-                arvoreSBB.gravaDados(n, contadorDeComparacoes, tempoGasto,"ordemOrdenadaArvoreSBB");
-                
-                // Arvore B - ordem x
-                tempoInicial = System.nanoTime();
-                //contadorDeComparacoes = arvoreB.pesquisa(itemSearch);
-                arvoreB.pesquisa(itemSearch);
-                paginasVisitadas = arvoreB.getPaginasVisitadas();
-                tempoFinal = System.nanoTime();
-                tempoGasto = (tempoFinal-tempoInicial);
-                //Dados obtidos
-                //System.out.println("Arvore B: "+n+" Ordem: "+ordem+" Tempo Gasto para fazer a procura: "+tempoGasto+"(nano segundos)"+" Paginas visitadas: "+paginasVisitadas);
-                String nameFile = "ordemOrdenadaArvoreB - Ordem "+ordem;
-                arvoreSBB.gravaDados(n, paginasVisitadas, tempoGasto,nameFile);
-            }
-           */
         }
 }

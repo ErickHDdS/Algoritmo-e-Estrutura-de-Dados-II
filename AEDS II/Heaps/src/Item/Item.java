@@ -15,16 +15,7 @@ public class Item {
             return 1;
         return 0;
     }
-    /*
-    public void alteraChave(Object chave) {
-        Integer ch = (Integer) chave;
-        this.chave = ch.intValue();
-    }
-    
-    public Object recuperaChave(){
-        return new Integer(this.chave); 
-    }
-    */
+
     public int getChave() {
         return chave;
     }
@@ -32,6 +23,4 @@ public class Item {
     public void setChave(int chave) {
         this.chave = chave;
     }
-
-    
 }
