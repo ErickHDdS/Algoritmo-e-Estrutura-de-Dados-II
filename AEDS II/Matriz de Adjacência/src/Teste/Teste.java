@@ -48,6 +48,8 @@ public class Teste {
         grafo1.insereAresta(7, 4, 1);
         grafo1.insereAresta(7, 6, 1);
         
+        System.out.println("MATRIZ: GRAFO 1");
+        grafo1.imprime();System.out.println("");
         // Ciclos grafo1
         XCiclo cicloGrafo1 = new XCiclo(grafo1);
         
@@ -88,6 +90,8 @@ public class Teste {
         
         grafo2.insereAresta(3, 3, 0);
         
+        System.out.println("MATRIZ: GRAFO 2");
+        grafo2.imprime();System.out.println("");
         // Ciclos grafo2
         XCiclo cicloGrafo2 = new XCiclo(grafo2);
         
