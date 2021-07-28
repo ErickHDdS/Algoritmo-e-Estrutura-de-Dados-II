@@ -1,17 +1,22 @@
 package ArvoreGeradoraMinima;
 
 public class FPHeapMinIndireto {
-    private double p[];
+    private double p[];             // peso de cada vertice
+    private double pTotal;          // pesoTotal da arvore
     private int n, pos[], fp[];
+    
+    //Inicializa o Prim
     public FPHeapMinIndireto(double p[], int v[]) {
         this.p = p; 
+        this.pTotal = 0;
         this.fp = v; 
         this.n = this.fp.length-1;
-        this.pos = new int [this.n];
-        for (int u = 0; u < this .n; u++) 
+        this.pos = new int [this.n];        //posicao do vertice
+        for (int u = 0; u < this.n; u++) 
             this.pos[u] = u+1;
     }
-    public void refaz ( int esq, int dir ) {
+    
+    public void refaz( int esq, int dir ) {
         int j = esq * 2; 
         int x = this.fp[esq];
         while (j <= dir ) {
@@ -27,6 +32,7 @@ public class FPHeapMinIndireto {
         this.fp[esq] = x; 
         this.pos[x] = esq;
     }
+    
     public void constroi() {
         int esq = n / 2 + 1;
         while (esq > 1) {
@@ -46,21 +52,29 @@ public class FPHeapMinIndireto {
         }
         return minimo;
     }
-    public void diminuiChave ( int i , double chaveNova) throws Exception {
+    
+    public void diminuiChave(int i , double chaveNova) throws Exception {
         i = this.pos[i]; 
         int x = fp [ i ];
         if(chaveNova < 0)
             throw new Exception ( "Erro : chaveNova com valor incorreto" ) ;
         this.p[x] = chaveNova;
+        this.pTotal+= this.p[x];
+        //System.out.println(this.pTotal);
         while (( i > 1) && (this.p[x] <= this.p[fp[ i / 2 ] ] ) ) {
             this.fp[i] = this.fp[ i / 2 ]; 
             this.pos[ fp [ i / 2] ] = i; 
             i /= 2;
         }
         this.fp[i] = x;
-        this .pos[x] = i;
+        this.pos[x] = i;
     }
+    
     boolean vazio() { 
         return this.n == 0;
+    }
+    
+    public double getPTotal(){
+        return this.pTotal;
     }
 }
