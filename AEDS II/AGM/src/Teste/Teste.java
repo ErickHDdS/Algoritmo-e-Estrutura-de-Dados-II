@@ -78,7 +78,7 @@ public class Teste {
         grafo2.insereAresta(3, 1, 2);
         grafo2.insereAresta(3, 2, 3);
         grafo2.insereAresta(3, 4, 9);
-        grafo2.insereAresta(3, 6, 7);
+        grafo2.insereAresta(3, 7, 6);
        
         grafo2.insereAresta(4, 4, 0);
         grafo2.insereAresta(4, 2, 2);
