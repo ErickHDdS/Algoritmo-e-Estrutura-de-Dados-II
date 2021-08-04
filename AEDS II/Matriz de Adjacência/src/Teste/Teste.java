@@ -110,5 +110,32 @@ public class Teste {
             System.out.println("O GRAFO 2 POSSUI CICLO");
         else
             System.out.println("O GRAFO 2 NÃO POSSUI CICLO");
+        
+        
+        
+        
+        
+        
+        
+        XGrafo grafo3 = new XGrafo(5); // Segundo grafo
+        
+        grafo3.insereAresta(1-1, 1-1, 0);
+        grafo3.insereAresta(1-1, 2-1, 1);
+        grafo3.insereAresta(1-1, 4-1, 1);
+        
+        grafo3.insereAresta(2-1, 2-1, 0);
+        grafo3.insereAresta(2-1, 3-1, 1);
+        grafo3.insereAresta(2-1, 5-1, 1);
+        
+        grafo3.insereAresta(3-1, 3-1, 0);
+        grafo3.insereAresta(3-1, 5-1, 1);
+        
+        grafo3.insereAresta(5-1, 5-1, 0);
+        grafo3.insereAresta(5-1, 4-1, 1)
+                ;
+        grafo3.insereAresta(4-1, 4-1, 0);
+        grafo3.insereAresta(4-1, 2-1, 1);
+        System.out.println("MATRIZ: GRAFO 3");
+        grafo3.imprime();System.out.println("");
     }
 }

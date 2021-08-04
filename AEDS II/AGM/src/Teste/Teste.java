@@ -110,7 +110,56 @@ public class Teste {
         grafo2.insereAresta(7, 5, 4);
         grafo2.insereAresta(7, 6, 6);
         grafo2.insereAresta(7, 8, 3);
-                
+        
+        // inserindo elementos grafo2:
+        XGrafo grafo3 = new XGrafo(9); // Segundo grafo
+        
+        grafo3.insereAresta(0, 0, 0);
+        grafo3.insereAresta(0, 1, 4);
+        grafo3.insereAresta(0, 7, 8);
+        
+        grafo3.insereAresta(1, 1, 0);
+        grafo3.insereAresta(1, 0, 4);
+        grafo3.insereAresta(1, 2, 8);
+        grafo3.insereAresta(1, 7, 11);
+        
+        grafo3.insereAresta(2, 2, 0);
+        grafo3.insereAresta(2, 1, 8);
+        grafo3.insereAresta(2, 3, 7);
+        grafo3.insereAresta(2, 8, 2);
+        grafo3.insereAresta(2, 5, 4);
+       
+        grafo3.insereAresta(3, 3, 0);
+        grafo3.insereAresta(3, 2, 7);
+        grafo3.insereAresta(3, 4, 9);
+        grafo3.insereAresta(3, 5, 14);
+        
+        grafo3.insereAresta(4, 4, 0);
+        grafo3.insereAresta(4, 3, 9);
+        grafo3.insereAresta(4, 5, 10);
+        
+        grafo3.insereAresta(5, 5, 0);
+        grafo3.insereAresta(5, 4, 10);
+        grafo3.insereAresta(5, 3, 14);
+        grafo3.insereAresta(5, 2, 4);
+        grafo3.insereAresta(5, 6, 2);
+        
+        grafo3.insereAresta(6, 6, 0);
+        grafo3.insereAresta(6, 5, 2);
+        grafo3.insereAresta(6, 8, 6);
+        grafo3.insereAresta(6, 7, 1);
+       
+        grafo3.insereAresta(7, 7, 0);
+        grafo3.insereAresta(7, 6, 1);
+        grafo3.insereAresta(7, 8, 7);
+        grafo3.insereAresta(7, 0, 8);
+        grafo3.insereAresta(7, 1, 11);
+        
+        grafo3.insereAresta(8, 8, 0);
+        grafo3.insereAresta(8, 6, 6);
+        grafo3.insereAresta(8, 7, 7);
+        grafo3.insereAresta(8, 2, 2);
+        
         //RESULTADOS: 
         System.out.println("\nARESTAS GRAFO 1: ");
         AgmPrim g1 = new AgmPrim(grafo1);
@@ -123,5 +172,11 @@ public class Teste {
         g2.obterAgm(2);
         g2.imprime();
         System.out.println("PESO : " +g2.getPeso());
+        
+        System.out.println("\nARESTAS GRAFO 3: ");
+        AgmPrim g3 = new AgmPrim(grafo3);
+        g3.obterAgm(0);
+        g3.imprime();
+        System.out.println("PESO : " +g3.getPeso());
     }
 }
