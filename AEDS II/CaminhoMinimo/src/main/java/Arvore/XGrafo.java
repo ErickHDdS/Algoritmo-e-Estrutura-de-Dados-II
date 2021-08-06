@@ -99,15 +99,14 @@ public class XGrafo {
     }
     
     public void imprime() {
-        System.out.print(" ");
+        System.out.print("    ");
         for(int i = 0; i < this.numVertices; i++)
-            System.out.print (i + " ");
+            System.out.print (i + "   ");
         System.out. println();
         for(int i = 0; i < this .numVertices; i++) {
-            System.out.print(i + " ");
+            System.out.print(i + "  ");
             for(int j = 0; j < this .numVertices; j++) {
-                System.out.println("D: " + this.matD[i][j] + " ");
-                System.out.println("T: " + this.matT[i][j] + " ");
+                System.out.print(this.matD[i][j] + " " + this.matT[i][j] + " ");
             }
             System.out.println();
         }

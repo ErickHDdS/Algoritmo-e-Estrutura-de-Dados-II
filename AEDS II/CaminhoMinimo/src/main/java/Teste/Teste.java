@@ -5,6 +5,7 @@ import Arvore.XGrafo;
 
 public class Teste {
     public static void main(String[] args) throws Exception {
+        int peso;
         XGrafo grafo1 = new XGrafo(6); // Primeiro grafo
        
         // inserindo elementos grafo1:
@@ -29,7 +30,10 @@ public class Teste {
         
         grafo1.insereAresta(5, 5, 0, 0);
 
+        //grafo1.imprime();
+        
         // inserindo elementos grafo2:
+        
         XGrafo grafo2 = new XGrafo(5); // Segundo grafo
         grafo2.insereAresta(0, 0, 0, 0);
         grafo2.insereAresta(0, 1, 3, 3);
@@ -51,19 +55,30 @@ public class Teste {
         grafo2.insereAresta(4, 0, 6, 3);
         grafo2.insereAresta(4, 2, 4, 7);
         
+        //grafo2.imprime();
+        
         //RESULTADOS: 
         XAEDsMaps g1 = new XAEDsMaps(grafo1);
-        g1.obterArvoreCMC(1);
-        
         XAEDsMaps g2 = new XAEDsMaps(grafo2);
-        g2.obterArvoreCMC(3);
         
         System.out.println("\nMELHOR DISTANCIA GRAFO 1: ");
-        g1.imprimeCaminho(1, 5);
+        g1.obterArvoreCMC(1, 5, "Melhor Distancia");
+        peso = g1.imprimeCaminho(1, 5, "Melhor Distancia");
+        System.out.println("PESO: " + peso);
+        
         System.out.println("\nMELHOR TEMPO GRAFO 1: ");
+        g1.obterArvoreCMC(1, 5, "Melhor Tempo");
+        peso = g1.imprimeCaminho(1, 5, "Melhor Tempo");
+        System.out.println("PESO: " + peso);
         
         System.out.println("\nMELHOR DISTANCIA GRAFO 2: ");
-        g2.imprimeCaminho(3, 0);
+        g2.obterArvoreCMC(3, 0, "Melhor Distancia");
+        peso = g2.imprimeCaminho(3, 0, "Melhor Distancia");
+        System.out.println("PESO: " + peso);
+        
         System.out.println("\nMELHOR TEMPO GRAFO 2: ");
+        g2.obterArvoreCMC(3, 0, "Melhor Tempo");
+        peso = g2.imprimeCaminho(3, 0, "Melhor Tempo");
+        System.out.println("PESO: " + peso);
     }
 }

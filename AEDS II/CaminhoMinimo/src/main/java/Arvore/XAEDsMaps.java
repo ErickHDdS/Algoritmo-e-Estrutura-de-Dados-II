@@ -5,6 +5,7 @@
 package Arvore;
 
 public class XAEDsMaps {
+    private int peso;
     private int antecessor[];
     private double pDistancia[];
     private double pTempo[];
@@ -12,7 +13,8 @@ public class XAEDsMaps {
     public XAEDsMaps (XGrafo grafo) { 
         this.grafo = grafo; 
     }
-    public void obterArvoreCMC(int raiz) throws Exception {
+    public void obterArvoreCMC(int raiz, int destino, String mode) throws Exception {
+        XGrafo.Aresta adj = null;
         int n = this.grafo.numVertices();
         this.pDistancia = new double[n]; // peso dos vértices
         this.pTempo = new double[n]; // peso dos vértices
@@ -26,23 +28,43 @@ public class XAEDsMaps {
         }
         pDistancia[raiz] = 0;
         pTempo[raiz] = 0;
-        FPHeapMinIndireto heap = new FPHeapMinIndireto (pDistancia, pTempo, vs);
-        heap.constroi();
-        while (!heap.vazio()) {
-            int u = heap.retiraMin();
-            if(!this.grafo.listaAdjVazia(u)) {
-                XGrafo.Aresta adj = grafo.primeiroListaAdj(u);
-                while(adj != null) {
-                    int v = adj.v2();
-                    if((this.pDistancia[v] > (this.pDistancia[u] + adj.pesoDistancia())) && (this.pTempo[v] > (this.pTempo[u] + adj.pesoTempo()))) {
-                        antecessor[v] = u;
-                        heap.diminuiChave(v, this.pDistancia[u] + adj.pesoDistancia());
-                        heap.diminuiChave(v, this.pTempo[u] + adj.pesoTempo());
+        
+        if(mode == "Melhor Distancia") {
+            FPHeapMinIndireto heap = new FPHeapMinIndireto (pDistancia, vs);
+            heap.constroi();
+            while (!heap.vazio()) {
+                int u = heap.retiraMin();
+                if(!this.grafo.listaAdjVazia(u)) {
+                    adj = grafo.primeiroListaAdj(u);
+                    while(adj != null) {
+                        int v = adj.v2();
+                        if((this.pDistancia[v] > (this.pDistancia[u] + adj.pesoDistancia()))) {
+                            antecessor[v] = u;
+                            heap.diminuiChave(v, this.pDistancia[u] + adj.pesoDistancia());
+                        }
+                        adj = grafo.proxAdj(u);
                     }
-                    adj = grafo.proxAdj(u);
                 }
             }
         }
+        else {
+            FPHeapMinIndireto heap = new FPHeapMinIndireto (pTempo, vs);
+            heap.constroi();
+            while (!heap.vazio()) {
+                int u = heap.retiraMin();
+                if(!this.grafo.listaAdjVazia(u)) {
+                    adj = grafo.primeiroListaAdj(u);
+                    while(adj != null) {
+                        int v = adj.v2();
+                        if((this.pTempo[v] > (this.pTempo[u] + adj.pesoTempo()))) {
+                            antecessor[v] = u;
+                            heap.diminuiChave(v, this.pTempo[u] + adj.pesoTempo());
+                        }
+                        adj = grafo.proxAdj(u);
+                    }
+                }
+            }
+        }    
     }
     public int antecessor(int u) { 
         return this.antecessor [u]; 
@@ -53,14 +75,19 @@ public class XAEDsMaps {
     public double pesoTempo(int u) { 
         return this.pTempo[u];
     }
-    public void imprimeCaminho(int origem, int v) {
+    public int imprimeCaminho(int origem, int v, String mode) {
         if(origem == v) 
             System.out.println(origem);
         else if(this.antecessor[v] == -1)
             System.out.println("Nao existe caminho de " +origem+ " ate " +v);
         else {
-            imprimeCaminho(origem, this.antecessor[v]);
+            imprimeCaminho(origem, this.antecessor[v], mode);
             System.out.println(v);
         }
+       
+        if(mode == "Melhor Distancia") 
+            return (int) this.pesoDistancia(v);
+        else
+            return (int) this.pesoTempo(v);
     }
 }
