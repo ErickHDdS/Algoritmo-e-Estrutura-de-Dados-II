@@ -30,10 +30,7 @@ public class Teste {
         
         grafo1.insereAresta(5, 5, 0, 0);
 
-        //grafo1.imprime();
-        
-        // inserindo elementos grafo2:
-        
+        // inserindo elementos grafo2:        
         XGrafo grafo2 = new XGrafo(5); // Segundo grafo
         grafo2.insereAresta(0, 0, 0, 0);
         grafo2.insereAresta(0, 1, 3, 3);
@@ -54,9 +51,7 @@ public class Teste {
         grafo2.insereAresta(4, 4, 0, 0);
         grafo2.insereAresta(4, 0, 6, 3);
         grafo2.insereAresta(4, 2, 4, 7);
-        
-        //grafo2.imprime();
-        
+
         //RESULTADOS: 
         XAEDsMaps g1 = new XAEDsMaps(grafo1);
         XAEDsMaps g2 = new XAEDsMaps(grafo2);

@@ -29,6 +29,7 @@ public class XAEDsMaps {
         pDistancia[raiz] = 0;
         pTempo[raiz] = 0;
         
+        // aplicando o metodo de melhor distancia
         if(mode == "Melhor Distancia") {
             FPHeapMinIndireto heap = new FPHeapMinIndireto (pDistancia, vs);
             heap.constroi();
@@ -47,6 +48,8 @@ public class XAEDsMaps {
                 }
             }
         }
+        
+        // aplicando o metodo de melhor tempo
         else {
             FPHeapMinIndireto heap = new FPHeapMinIndireto (pTempo, vs);
             heap.constroi();
@@ -69,10 +72,10 @@ public class XAEDsMaps {
     public int antecessor(int u) { 
         return this.antecessor [u]; 
     }
-    public double pesoDistancia(int u) { 
+    public double pesoDistancia(int u) { //retorna o peso da melhor distancia
         return this.pDistancia[u];
     }
-    public double pesoTempo(int u) { 
+    public double pesoTempo(int u) { //retorna o peso do melhor tempo
         return this.pTempo[u];
     }
     public int imprimeCaminho(int origem, int v, String mode) {
